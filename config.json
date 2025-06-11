@@ -1,0 +1,15 @@
+
+{
+  "playlistsToInclude": [
+    "Chill",
+    "Liked Songs",
+    "Singin Songs"
+  ],
+  "weightModifier": 1,
+  "numberOfRadioArtists": 100,
+  "songsPerArtist": 10,
+  "removeRadioSongsByWeight": true,
+  "includeRadioInMaster": true,
+  "includeDiscoverWeeklyInRadio": true
+}
+
