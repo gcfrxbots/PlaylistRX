@@ -1,5 +1,6 @@
-
 {
+  "clientId": "bb8442290b7d4656835f9f2472717ca2",
+  "clientSecret": "d620bc83b7e04680b943e69e45512980",
   "playlistsToInclude": [
     "Chill",
     "Liked Songs",
@@ -7,9 +8,13 @@
   ],
   "weightModifier": 1,
   "numberOfRadioArtists": 100,
-  "songsPerArtist": 10,
+  "radioArtistSongs": 10,
+  "radioArtistRandomSongs": 5,
   "removeRadioSongsByWeight": true,
   "includeRadioInMaster": true,
-  "includeDiscoverWeeklyInRadio": true
+  "includeDiscoverWeeklyInRadio": true,
+  "artistIHearTooMuch": true,
+  "splitTheDeck": true,
+  "artistBlacklist": true
 }
 
