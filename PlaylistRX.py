@@ -152,7 +152,7 @@ class SpotifyRadio:
         self.artistBlacklistNames = artistBlacklistNames
         print("Spotify connection successful.")
 
-    def generateRadio(self, masterId):
+    def generateRadio(self, masterId, config):
         print("Generating radio...")
         radioTracks = []
         attempted = 0
@@ -419,7 +419,7 @@ def main():
             trackOccurrences = {}
             for tid in tooMuchTracks:
                 trackOccurrences[tid] = trackOccurrences.get(tid, 0) + 1
-            
+            print("Getting track info")
             tooMuchInfo = spotifyConn.getTracksInfo(list(trackOccurrences.keys()))
             artistNameCounts = {}  # Count by artist name
             
@@ -454,7 +454,7 @@ def main():
 
     # first: radio
     radio = SpotifyRadio(spotifyConn, config, topTrackIds, topPositions, tooMuchCounts, weightModifier, artistTooMuch, artistBlacklistNames)
-    radio.generateRadio(masterId)
+    radio.generateRadio(masterId, config)
 
     # then: master (verbose)
     rawIds = []
