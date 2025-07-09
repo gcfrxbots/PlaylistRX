@@ -540,21 +540,21 @@ def main():
                 # Shuffle the newly selected tracks
                 random.shuffle(selected)
                 
-                # Remove bottom half of shuffled selected tracks
+                # Split newly selected tracks into top half and bottom half
                 bottomHalfPoint = len(selected) // 2
-                bottomHalfOfMaster = selected[bottomHalfPoint:]
                 topHalfOfSelected = selected[:bottomHalfPoint]
+                bottomHalfOfSelected = selected[bottomHalfPoint:]
                 
-                # Combine bottom half with top quarter and shuffle together
-                combinedForBottom = bottomHalfOfMaster + topOfMaster
+                # Combine top quarter of current master with bottom half of newly selected tracks
+                combinedForBottom = bottomHalfOfSelected + topOfMaster
                 random.shuffle(combinedForBottom)
                 
-                # Final result: top half of selected + combined shuffled bottom
+                # Final result: top half of newly selected + combined shuffled bottom
                 selected = topHalfOfSelected + combinedForBottom
                 
-                print(f"Removed {len(topOfMaster)} tracks from top of current master")
+                print(f"Taking {len(topOfMaster)} tracks from top of current master")
                 print(f"Shuffled {len(selected)} newly selected tracks")
-                print(f"Removed {len(bottomHalfOfMaster)} tracks from bottom half, combined with top quarter")
+                print(f"Combined {len(bottomHalfOfSelected)} bottom half tracks with {len(topOfMaster)} top quarter tracks")
                 print(f"Final playlist: {len(topHalfOfSelected)} + {len(combinedForBottom)} = {len(selected)} tracks")
             else:
                 # No current master, just shuffle normally
