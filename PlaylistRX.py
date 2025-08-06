@@ -748,31 +748,36 @@ def main():
     print("⎯⎯ End Master Decisions ⎯⎯\n")
 
     if selected:
+        # Shuffle the selected tracks first
+        random.shuffle(selected)
+        
         # Apply MasterSongs limit BEFORE adding radio
         MasterSongs = config.get("MasterSongs", 1000) # Default to 1000 if not specified
         if len(selected) > MasterSongs:
             print(f"Selected tracks exceed MasterSongs ({MasterSongs}). Truncating to {MasterSongs} tracks.")
             selected = selected[:MasterSongs]
         
-        # Shuffle the selected tracks
-        random.shuffle(selected)
-        
-        # Clear playlist and add the limited master tracks
-        spotifyConn.clearPlaylist(masterId)
-        spotifyConn.addTracksToPlaylist(masterId, selected)
-        print(f"Updated '[RX] Master' with {len(selected)} tracks from playlists")
-        
-        # Add radio tracks if enabled (this happens AFTER the limit is applied)
+        # Get radio tracks if enabled and shuffle them INTO master
+        finalTracks = selected.copy()
         if config.get("includeRadioInMaster", False):
             radioId = spotifyConn.getPlaylistIdByName("[RX] Radio")
             if radioId:
                 radioTracks = spotifyConn.getPlaylistTracks(radioId)
                 if radioTracks:
-                    # Shuffle radio tracks before adding
-                    random.shuffle(radioTracks)
-                    spotifyConn.addTracksToPlaylist(masterId, radioTracks)
-                    print(f"Added {len(radioTracks)} radio tracks to '[RX] Master'")
-                    print(f"Final '[RX] Master' contains {len(selected) + len(radioTracks)} tracks total")
+                    print(f"Integrating {len(radioTracks)} radio tracks into master playlist")
+                    finalTracks.extend(radioTracks)
+                    # Final shuffle to integrate radio tracks throughout the playlist
+                    random.shuffle(finalTracks)
+                    print(f"Final '[RX] Master' contains {len(selected)} master + {len(radioTracks)} radio = {len(finalTracks)} tracks total")
+                else:
+                    print("No radio tracks found to add to master")
+            else:
+                print("Radio playlist not found")
+        
+        # Clear playlist and add all tracks (master + radio, shuffled together)
+        spotifyConn.clearPlaylist(masterId)
+        spotifyConn.addTracksToPlaylist(masterId, finalTracks)
+        print(f"Updated '[RX] Master' with {len(finalTracks)} tracks")
     else:
         print("No tracks selected for master playlist")
     
