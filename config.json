@@ -7,14 +7,18 @@
     "Singin Songs"
   ],
   "weightModifier": 1,
-  "numberOfRadioArtists": 100,
-  "radioArtistSongs": 10,
-  "radioArtistRandomSongs": 5,
+  "numberOfRadioArtists": 60,
+  "radioArtistSongs": 6,
+
   "removeRadioSongsByWeight": true,
   "includeRadioInMaster": true,
   "includeDiscoverWeeklyInRadio": true,
   "artistIHearTooMuch": true,
-  "splitTheDeck": true,
-  "artistBlacklist": true
+  "artistBlacklist": true,
+  "MasterSongs": 1000,
+  "excludedWords": [
+    "Commentary",
+    "Documentary",
+    "Live"
+  ]
 }
-
