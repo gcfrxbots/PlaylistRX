@@ -560,7 +560,7 @@ def parseArgs():
     parser.add_argument("--playlistsToInclude", nargs="+", help="Playlists to include")
     parser.add_argument("--artistIHearTooMuch", action="store_true", help="Enable artist I hear too much feature")
     parser.add_argument("--artistBlacklist", action="store_true", help="Enable artist blacklist feature")
-    parser.add_argument("--MasterSongs", type=int, help="Maximum number of songs in master playlist before adding radio")
+    parser.add_argument("--masterSongs", type=int, help="Maximum number of songs in master playlist before adding radio")
     parser.add_argument("--excludedWords", nargs="+", help="Words to exclude from song titles")
     return parser.parse_args()
 
@@ -589,8 +589,8 @@ def main():
         config["artistIHearTooMuch"] = True
     if args.artistBlacklist:
         config["artistBlacklist"] = True
-    if args.MasterSongs is not None:
-        config["MasterSongs"] = args.MasterSongs
+    if args.masterSongs is not None:
+        config["masterSongs"] = args.masterSongs
     if args.excludedWords:
         config["excludedWords"] = args.excludedWords
     
@@ -754,11 +754,11 @@ def main():
         # Shuffle the selected tracks first
         random.shuffle(selected)
         
-        # Apply MasterSongs limit BEFORE adding radio
-        MasterSongs = config.get("MasterSongs", 1000) # Default to 1000 if not specified
-        if len(selected) > MasterSongs:
-            print(f"Selected tracks exceed MasterSongs ({MasterSongs}). Truncating to {MasterSongs} tracks.")
-            selected = selected[:MasterSongs]
+        # Apply masterSongs limit BEFORE adding radio
+        masterSongs = config.get("masterSongs", 1000) # Default to 1000 if not specified
+        if len(selected) > masterSongs:
+            print(f"Selected tracks exceed masterSongs ({masterSongs}). Truncating to {masterSongs} tracks.")
+            selected = selected[:masterSongs]
         
         # Get radio tracks if enabled and shuffle them INTO master
         finalTracks = selected.copy()

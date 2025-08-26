@@ -16,10 +16,10 @@ clientSecret - Spotify Developer Application Client Secret
 playlistsToInclude - List of all playlists to be shuffled into Master. Use "Liked Songs" to include Liked Songs, and "Discover Weekly" to include that.
 weightModifier - Default 1, increase to remove more songs you might be sick of.
 numberOfRadioArtists - Number of artists to pick from Master, to pick songs from to add to Radio
-radioArtistSongs - How many of the artist's top 10 songs should be added to the Radio, for example "5" will randomly pick and add 5 of their top 10 songs.
 removeRadioSongsByWeight - Should it remove songs you hear too much from the radio too?
 includeRadioInMaster - Should it shuffle the radio into Master?
 includeDiscoverWeeklyInRadio - Should it shuffle your Discover Weekly into Radio?
 artistIHearTooMuch - If 3 or more songs by the same artist are in your "Songs I Hear Too Much" playlist, -3 weight of ALL songs by that artist. Scales up with more songs added.
 artistBlacklist - If 10 or more songs by the same artist are in "Songs I Hear Too Much", that artist is blacklisted and will not be added to any RX Playlist.
+masterSongs - The total number of songs added to Master (from all your playlists) BEFORE the Radio is shuffled in, if enabled. Allows you to fine-tune how much of Master is songs you know vs new music. 
 excludedWords - Prevents the Radio from adding songs with these words in their title, to filter out Live songs and whatnot.
