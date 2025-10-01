@@ -7,15 +7,15 @@
     "Singin Songs"
   ],
   "weightModifier": 1,
-  "numberOfRadioArtists": 60,
-  "radioArtistSongs": 6,
+  "numberOfRadioArtists": 80,
+  "radioArtistSongs": 8,
 
   "removeRadioSongsByWeight": true,
   "includeRadioInMaster": true,
   "includeDiscoverWeeklyInRadio": true,
   "artistIHearTooMuch": true,
   "artistBlacklist": true,
-  "MasterSongs": 1000,
+  "MasterSongs": 700,
   "excludedWords": [
     "Commentary",
     "Documentary",
